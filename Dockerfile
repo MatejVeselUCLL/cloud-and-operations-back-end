@@ -10,7 +10,7 @@ RUN mvn clean package spring-boot:repackage
 # Use an official OpenJDK image as the base image
 FROM eclipse-temurin:21-jdk
 # Application version
-RUN VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+RUN echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
 # Set the working directory in the container
 WORKDIR /app
 # Copy the built JAR file from the previous stage to the container

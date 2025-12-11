@@ -26,7 +26,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }} .
+        run: docker build -t ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }} .
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }}
+        run: docker push ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }}

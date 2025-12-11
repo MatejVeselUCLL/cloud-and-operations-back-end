@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.PACKAGE_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }} .
+        run: docker build --build-arg version=${{ steps.pom-version.outputs.version }} -t ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }} .
 
       - name: Push Docker image
         run: docker push ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }}

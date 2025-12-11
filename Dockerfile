@@ -1,3 +1,4 @@
+ARG version
 # Use an official Maven image as the base image
 FROM maven:3.9.9-amazoncorretto-21 AS build
 # Set the working directory in the container
@@ -12,8 +13,8 @@ FROM eclipse-temurin:21-jdk
 # Set the working directory in the container
 WORKDIR /app
 # Copy the built JAR file from the previous stage to the container
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar .
+COPY --from=build /app/target/demo-$version.jar .
 # Connect image to repository.
 LABEL org.opencontainers.image.source https://github.com/matejveselucll/cloud-and-operations-back-end
 # Set the command to run the application
-CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "demo-$version.jar"]

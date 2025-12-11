@@ -1,4 +1,3 @@
-ARG version
 # Use an official Maven image as the base image
 FROM maven:3.9.9-amazoncorretto-21 AS build
 # Set the working directory in the container
@@ -10,11 +9,13 @@ COPY src ./src
 RUN mvn clean package spring-boot:repackage
 # Use an official OpenJDK image as the base image
 FROM eclipse-temurin:21-jdk
+# Application version
+ARG VERSION
 # Set the working directory in the container
 WORKDIR /app
 # Copy the built JAR file from the previous stage to the container
-COPY --from=build /app/target/demo-$version.jar .
+COPY --from=build /app/target/demo-${VERSION}.jar .
 # Connect image to repository.
-LABEL org.opencontainers.image.source https://github.com/matejveselucll/cloud-and-operations-back-end
+LABEL org.opencontainers.image.source=https://github.com/matejveselucll/cloud-and-operations-back-end
 # Set the command to run the application
-CMD ["java", "-jar", "demo-$version.jar"]
+CMD ["java", "-jar", "demo-${VERSION}.jar"]

@@ -1,5 +1,9 @@
 name: Publish Docker image
 
+# Source 1: https://oalahurikar.github.io/app-dev-blog/Github/Github-Container-Registry
+# Source 2: https://stackoverflow.com/a/3545363/8259309
+# Source 3: https://stackoverflow.com/a/2264537/8259309
+
 on:
   push:
     branches: [ dev ]
@@ -23,7 +27,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.PACKAGE_TOKEN }}
 
       - name: Build Docker image
         run: docker build -t ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-dev:${{ steps.pom-version.outputs.version }} .

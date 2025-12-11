@@ -16,7 +16,7 @@ jobs:
 
       - name: get-pom-version
         id: pom-version
-        run: echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout) >> "$GITHUB_OUTPUT"
+        run: echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
         uses: docker/login-action@v2

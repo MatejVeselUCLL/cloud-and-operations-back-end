@@ -16,12 +16,7 @@ jobs:
 
       - name: get-pom-version
         id: pom-version
-        uses: PERES-Richard/maven-get-version-action@v3.0.0
-        with:
-          path: "./"  # Optional: pom.xml relative folder path
-
-      - name: Print Maven POM project version
-        run: echo "version = ${{ steps.pom-version.outputs.version }}"
+        run: version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout) && echo $version >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
         uses: docker/login-action@v2

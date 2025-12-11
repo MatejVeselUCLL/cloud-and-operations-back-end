@@ -16,4 +16,4 @@ COPY --from=build /app/target/demo-*.jar .
 # Connect image to repository.
 LABEL org.opencontainers.image.source=https://github.com/matejveselucll/cloud-and-operations-back-end
 # Set the command to run the application
-CMD ["java", "-jar", "demo-*.jar"]
+#CMD ["java", "-jar", "demo-0.0.5-SNAPSHOT.jar"]

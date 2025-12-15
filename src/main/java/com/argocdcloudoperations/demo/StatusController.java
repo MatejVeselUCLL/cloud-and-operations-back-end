@@ -11,6 +11,6 @@ import java.util.Map;
 public class StatusController {
     @GetMapping
     public Map<String, String> getStatus() {
-        return Map.of("message", "Demo API development v0.1.2 (dev)");
+        return Map.of("message", "Demo API development v0.1.3 (dev)");
     }
 }

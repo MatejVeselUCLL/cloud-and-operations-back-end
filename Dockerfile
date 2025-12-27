@@ -12,8 +12,8 @@ FROM eclipse-temurin:21-jdk
 # Set the working directory in the container
 WORKDIR /app
 # Copy the built JAR file from the previous stage to the container
-COPY --from=build /app/target/demo-*.jar .
+COPY --from=build /app/target/demo-dev-*.jar .
 # Connect image to repository.
-LABEL org.opencontainers.image.source=https://github.com/matejveselucll/cloud-and-operations-back-end
+#LABEL org.opencontainers.image.source=https://github.com/matejveselucll/cloud-and-operations-back-end
 # Set the command to run the application
 #CMD ["java", "-jar", "demo-0.0.5-SNAPSHOT.jar"]

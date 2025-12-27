@@ -6,7 +6,7 @@ name: Publish Docker image
 
 on:
   push:
-    branches: [ qa ]
+    branches: [ main ]
 
 jobs:
   build-and-push:
@@ -35,7 +35,7 @@ jobs:
       - name: Build Docker image
 #        Test the build locally with the following docker command.
 #        docker build -t ghcr.io/matejveselucll/demo-cloud-and-operations-back-end-dev:v0.1.7 .
-        run: docker build -t ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-qa:${{ steps.pom-version.outputs.version }} .
+        run: docker build -t ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-main:${{ steps.pom-version.outputs.version }} .
 
       - name: Push Docker image
-        run: docker push ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-qa:${{ steps.pom-version.outputs.version }}
+        run: docker push ghcr.io/$(echo "${{ github.repository_owner }}" | awk '{print tolower($0)}')/demo-cloud-and-operations-back-end-main:${{ steps.pom-version.outputs.version }}

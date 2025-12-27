@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.argocdcloudoperations</groupId>
-	<artifactId>demo-dev</artifactId>
+	<artifactId>demo</artifactId>
 	<version>v0.1.6</version>
-	<name>demo-dev</name>
+	<name>demo</name>
 	<description>Demo project for Argo CD Cloud Operations</description>
 	<url/>
 	<licenses>
